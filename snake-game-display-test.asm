@@ -6,7 +6,7 @@ arenaBG:	.word 0xBB55D914	# BB      | 55 | D9 | 14  ----BACKGROUND COLOR	#
 screenStart:	.word 0x10010500
 
 .macro PaintArena 
-		li $t0, 256 #starting line index [halved line size]
+		li $t0, 128 #starting line index [halved line size]
 		li $t1, 0 #starting pixel index
 		lw $t3, screenStart # load starting address on t3		
 		lw $t2, arenaBG #load bg color on t2	
