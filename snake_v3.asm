@@ -1,9 +1,5 @@
 # TO-DO:
-# add input validation
-# like not being able to go right when left
-# and when going up you can't go down, etc...
-# blah blah blah rah
-# end of to-do list
+# add more powerups and features
 
 # BITMAP SETTINGS
 # Unit Width in pixels: 8 			         
@@ -21,7 +17,7 @@ foodcolor:      .word   0xff0000        # red
 up:             .word   0x01000000      # direction code for up
 down:           .word   0x02000000      # direction code for down 
 left:           .word   0x03000000      # direction code for left
-right:          .word   0x04000000      # direction code for up
+right:          .word   0x04000000      # direction code for right
     
 gameOverStr:    .asciiz "Game over! Your score: "
 endline:        .asciiz "\n"
@@ -165,13 +161,14 @@ eatFood:
     # generate new food
     jal randomFoodLocation
     jal randomObstacle
+    j drawHead
 
 # delete old tail and update new tail
 cont:
     lw  $t0, 0($s2)             # get old tail value
     li  $t1, 0xff000000
     and $t0, $t0, $t1           # get the first 2 bytes (direction of old tail)
-                                # to move to the next tail
+					# to move to the next tail                              
     # delete old tail
     lw  $t1, bgcolor            
     sw  $t1, 0($s2)             # set old tail == bgcolor
@@ -198,6 +195,8 @@ moveTailLeft:
 moveTailRight:
     add $s2, $s2, 4
     j   drawHead
+    
+
 
 # draw head 
 drawHead:
