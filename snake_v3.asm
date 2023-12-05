@@ -164,6 +164,7 @@ eatFood:
     
     # generate new food
     jal randomFoodLocation
+    jal randomObstacle
 
 # delete old tail and update new tail
 cont:
@@ -227,6 +228,25 @@ drawFood:
     sw  $t1, 0($t0)         # to the randomized square
     jr  $ra
 
+randomObstacle:
+# Generate the location of apple
+    li  $v0, 42
+    li  $a1, 2047       # upperbound = 2047
+    syscall             # a0 = rand[0, 2047]
+    
+    # Check if location is valid
+    la  $t0, squares    # base address
+    sll $a0, $a0, 2     # a0 = a0 * 4
+    add $t0, $t0, $a0   # address of the randomized square
+
+    lw  $t1, 0($t0)                     # load randomized square's color
+    lw  $t2, bgcolor                    # load bg color
+    bne $t1, $t2, randomObstacle    # rerandom if square's color != bg color (square is occupied)
+
+drawObstacle:
+    lw  $t1, wallcolor      # load obstacle color 
+    sw  $t1, 0($t0)         # to the randomized square
+    jr  $ra
 
 
 # game function
