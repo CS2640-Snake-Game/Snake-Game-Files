@@ -144,7 +144,6 @@ moveHeadRight:
 # check if collision
 checkCollision:
     lw  $t0, 0($s1)             # load color of the head snake square b4 drawing
-    lw  $t1, foodcolor          # load food color
     lw  $t1, bgcolor            # load background color
     beq $t0, $t1, cont          # continue if head == background color
     
