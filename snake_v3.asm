@@ -1,5 +1,7 @@
-# TO-DO:
-# add more powerups and features
+# CS2640 Snake Game Project
+# Authors: Michael Ly, Sarah Acosta, Catherine Gutierrez
+# Description: A game of snake built in MIPS assembly. Goal of the game is to eat apples while avoiding 
+# walls, obstacles, and your own tail.
 
 # BITMAP SETTINGS
 # Unit Width in pixels: 8 			         
