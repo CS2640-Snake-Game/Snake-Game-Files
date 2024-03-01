@@ -1,3 +1,4 @@
-# Snake-Game-Files
+# Snake Game
+To run, download Mars Simulator: https://courses.missouristate.edu/KenVollmar/mars/.
 
-snake_v3.asm is the file for the snake game. snake-game-display-test.asm is just a file used to test the bitmap display during at the beginning of the project. 
+Connect the Bitmap Display and Keyboard MMIO Simulator and run the .asm file
